@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from  '../../redux/actions';
 import { FilterContainer, FilterField } from './Filter.styled';
 
-export const Filter = ({ onFilterChange }) => {
-  const handleChange = event => {
-    onFilterChange(event.target.value);
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(setFilter(event.target.value));
   };
 
   return (

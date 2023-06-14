@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/actions';
 import { FormContainer, InputField, SubmitButton } from './Form.styled';
 
-export const Form = ({ onAddContact }) => {
+export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const formRef = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const nameInput = formRef.current.elements.name;
@@ -31,7 +33,7 @@ export const Form = ({ onAddContact }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onAddContact(name, number);
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };
@@ -46,7 +48,7 @@ export const Form = ({ onAddContact }) => {
         value={name}
         onChange={e => setName(e.target.value)}
         pattern="^[a-zA-Z\u0430-\u044F\u0410-\u042F]+(([' -][a-zA-Z\u0430-\u044F\u0410-\u042F ])?[a-zA-Z\u0430-\u044F\u0410-\u042F]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        title="Name may contain only letters, apostrophe, dash, and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
       <p>Number</p>
@@ -62,8 +64,4 @@ export const Form = ({ onAddContact }) => {
       <SubmitButton type="submit">Add contact</SubmitButton>
     </FormContainer>
   );
-};
-
-Form.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
 };
