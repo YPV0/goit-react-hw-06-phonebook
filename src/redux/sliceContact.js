@@ -30,4 +30,4 @@ const sliceContact = createSlice({
   },
 });
 
-export default sliceContact;
+export default sliceContact.reducer;

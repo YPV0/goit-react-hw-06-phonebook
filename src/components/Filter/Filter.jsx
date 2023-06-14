@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setFilter } from  '../../redux/actions';
 import { FilterContainer, FilterField } from './Filter.styled';
@@ -20,6 +19,4 @@ export const Filter = () => {
   );
 };
 
-Filter.propTypes = {
-  onFilterChange: PropTypes.func.isRequired,
-};
+
