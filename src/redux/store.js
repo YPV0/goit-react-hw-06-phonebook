@@ -9,7 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import sliceContact from './sliceContact';
+import contactSlice from './sliceContact';
 import sliceFilter from './sliceFilter';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
@@ -20,7 +20,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  contacts: sliceContact.reducer,
+  contacts: contactSlice.reducer,
   filter: sliceFilter.reducer,
 });
 
