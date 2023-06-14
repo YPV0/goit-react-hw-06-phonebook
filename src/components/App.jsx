@@ -27,11 +27,13 @@ export const App = () => {
     dispatch(deleteContact(id));
   };
 
-  const filteredContacts = contacts.filter(
-    contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-      contact.number.includes(filter)
-  );
+  const filteredContacts = contacts
+  ? contacts.filter(
+      contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()) ||
+        contact.number.includes(filter)
+    )
+  : [];
 
   return (
     <section>
